@@ -26,8 +26,6 @@ public class MyActivity extends AppCompatActivity {
 
         // Your activity setup code...
         mVideoUrls.add("http://192.168.1.100/video/video.mp4");
-        mVideoUrls.add("http://192.168.1.100/video/video.mp4");
-        mVideoUrls.add("http://192.168.1.100/video/video.mp4");
 
         for (String videoUrl : mVideoUrls) {
             setupPlayerView(videoView, videoUrl);
