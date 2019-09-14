@@ -15,6 +15,7 @@ import java.util.List;
 public class MyActivity extends AppCompatActivity {
 
     private List<String> mVideoUrls = new ArrayList<>();
+    private PlayerView videoView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -22,7 +23,7 @@ public class MyActivity extends AppCompatActivity {
 
         setContentView(R.layout.myactivity);
 
-        PlayerView videoView = findViewById(R.id.exoplayer);
+        videoView = findViewById(R.id.exoplayer);
 
         // Your activity setup code...
         mVideoUrls.add("http://csclab.xyz/video/video.mp4");
@@ -36,6 +37,8 @@ public class MyActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         for (String videoUrl : mVideoUrls) {
+            ExoPlayerViewManager.getInstance( videoUrl )
+                    .prepareExoPlayer(this, videoView);
             ExoPlayerViewManager.getInstance(videoUrl).goToForeground();
         }
         Log.d("csc_debug", "onResume");
